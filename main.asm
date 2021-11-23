@@ -1,6 +1,6 @@
-.text
-
 .globl main
+
+.text
 
 main:
 
@@ -59,5 +59,6 @@ error_input_op:
 	j main
 
 end:
+
 	li $v0, 10
 	syscall

@@ -5,7 +5,7 @@
 
 .data
 
-msj_menu: .asciiz "\n== Máquina expendedora de artesanías == \n1. Mostrar productos \n2. Mostrar stock \n3. Salir"
+msj_menu: .asciiz "\n== Máquina expendedora de artesanías == \n1. Comprar producto \n2. Mostrar stock \n3. Salir"
 msj_productos: .asciiz "\n== Productos ==\n"
 msj_stock: .asciiz "\n== Stock productos ==\n"
 msj_error_input_op: .asciiz "\nError, opción no válida. \n"

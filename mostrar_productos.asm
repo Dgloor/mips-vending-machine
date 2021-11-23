@@ -3,7 +3,7 @@
 .text
 
 mostrar_productos:
-	
+
 	addi $sp, $sp, -4
 	sw $ra, 0($sp)
 
@@ -17,9 +17,9 @@ mostrar_productos:
 	la $t4, precios                   # Puntero al primer precio
 	
 	for:
-	
+
 		beq $t1, $t2, return            # i < total_productos
-		
+
 		move $a0, $t1
 		li $v0, 1
 		syscall                         # Imprime pos producto
@@ -33,9 +33,9 @@ mostrar_productos:
 		
 		la $a0, text_espacio_dolar
 		syscall
-		
-		lw $a0, ($t4) 
-		li $v0, 1
+
+		lwc1 $f12, ($t4) 
+		li $v0, 2
 		syscall                         # Imprime precio
 		
 		la $a0, NL
