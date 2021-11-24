@@ -15,5 +15,4 @@ cantidades: .word 10, 10, 25, 15, 10, 9
 
 # Minima cantidad x producto antes de advertir
 min_stock: .word 3, 3, 7, 4, 3, 2
-
 total_productos: .word 6

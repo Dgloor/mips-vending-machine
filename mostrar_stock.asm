@@ -2,6 +2,9 @@
 
 .text 
 
+### 
+### Presenta la cantidad restante de unidades de cada producto 
+###
 mostrar_stock:
 
 	addi $sp, $sp, -4

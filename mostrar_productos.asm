@@ -2,6 +2,9 @@
 
 .text
 
+### 
+### Presenta los productos junto a su respectivo precio 
+###
 mostrar_productos:
 
 	addi $sp, $sp, -4
