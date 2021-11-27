@@ -21,6 +21,9 @@ realizar_cobro:
 	
 	while:
 	
+		c.lt.s $f5, $f20                # while dinero_ingresado < precio_producto
+		bc1f endWhile
+	
 		li $v0, 4
 		la $a0, msj_total_producto
 		syscall
@@ -43,14 +46,14 @@ realizar_cobro:
 	
 		li $v0, 2
 	  mov.s $f12, $f4
-		syscall                           # Imprime restante a pagar
+		syscall                          # Imprime restante a pagar
 	
 		li $v0, 4
 		la $a0, NL
 		syscall
 	
-		la $a0, msj_denominaciones        # Imprime denominaciones válidas
-		syscall
+		la $a0, msj_denominaciones
+		syscall                          # Imprime denominaciones válidas
 	
 		la $a0, input_dinero
 		syscall
@@ -65,6 +68,21 @@ realizar_cobro:
 		sub.s $f4, $f4, $f0              # restante -= dinero_ingreado
 
 		jal while
+
+endWhile:
+	
+	li $v0, 4
+	la $a0, msj_cambio
+	syscall
+
+	li $v0, 2
+	sub.s $f6, $f5, $f20
+	mov.s $f12, $f6                   # Imprime cambio
+	syscall	
+	
+	li $v0, 4
+	la $a0, msj_gracias_compra
+	syscall
 	
 return:
 

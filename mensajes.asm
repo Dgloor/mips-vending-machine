@@ -1,8 +1,10 @@
 .globl msj_menu, msj_productos, msj_stock, msj_pago
-.globl msj_denominaciones, msj_total_producto, msj_dinero_ingresado, msj_restante
+.globl msj_denominaciones, msj_total_producto, msj_dinero_ingresado
+.globl msj_restante, msj_cambio, msj_gracias_compra
 .globl msj_error_input_op, msj_error_denominacion
 .globl input_op, input_producto, input_dinero
-.globl text_espacio_dolar, text_punto_espacio, text_lista, text_puntos_espacio, text_unidades, NL
+.globl text_espacio_dolar, text_punto_espacio, text_lista
+.globl text_puntos_espacio, text_unidades, NL
 
 .data
 
@@ -15,6 +17,8 @@ msj_denominaciones: .asciiz "\nDenominaciones aceptadas: $20, $10, $5, $1, $0.50
 msj_total_producto: .asciiz "\nTotal producto: $"
 msj_dinero_ingresado: .asciiz "\nMonto ingresado: $"
 msj_restante: .asciiz "\nRestante: $"
+msj_cambio: .asciiz "\nSu cambio es de: $ "
+msj_gracias_compra: .asciiz "\n\n¡Gracias por su compra!\n"
 
 msj_error_input_op: .asciiz "\n[!] Error, opción no válida. \n"
 msj_error_denominacion: .asciiz "\n[!] Error dinero inválido\n"

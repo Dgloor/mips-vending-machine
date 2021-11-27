@@ -1,4 +1,4 @@
-.globl productos, precios, total_productos, cantidades, min_stock
+.globl productos, precios, total_productos, cantidades, min_stock, denominaciones
 
 .data
 
@@ -12,6 +12,7 @@ prod_6: .asciiz "cinturon"
 productos: .word prod_1, prod_2, prod_3, prod_4, prod_5, prod_6
 precios: .float 3.5, 5.6, 2.5, 15.3, 7.5, 10.0
 cantidades: .word 10, 10, 25, 15, 10, 9
+denominaciones: .word 20.00, 10.00, 5.00, 1.00, 0.50, 0.25, 0.10, 0.05
 
 # Minima cantidad x producto antes de advertir
 min_stock: .word 3, 3, 7, 4, 3, 2
