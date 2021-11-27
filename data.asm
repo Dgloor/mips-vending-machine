@@ -1,4 +1,5 @@
-.globl productos, precios, total_productos, cantidades, min_stock, denominaciones
+.globl productos, precios, total_productos, total_denominaciones
+.globl cantidades, min_stock, denominaciones
 
 .data
 
@@ -17,3 +18,4 @@ denominaciones: .float 20, 10, 5, 1, 0.5, 0.25, 0.10, 0.05
 # Minima cantidad x producto antes de advertir
 min_stock: .word 3, 3, 7, 4, 3, 2
 total_productos: .word 6
+total_denominaciones: .word 8

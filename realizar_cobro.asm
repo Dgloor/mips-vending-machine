@@ -11,7 +11,7 @@ realizar_cobro:
 	sw $ra, 0($sp)
 	
 	la $t2, precios                   # Puntero al primer precio
-	sll $t3, $t1, 2                   # Posición producto * 4
+	sll $t3, $a0, 2                   # Posición producto * 4
 	add $t3, $t2, $t3                 # Inicio array + offset
 	lwc1 $f20, ($t3)                  # Precio producto
 	
@@ -60,9 +60,12 @@ realizar_cobro:
 	
 		li $v0, 6
 		syscall
-		#mov.s $f4, $f0
+		mov.s $f12, $f0
 
-		#jal validar_denominacion
+		jal validar_denominacion
+		# if dinero not in denominaciones_validas
+		
+		else:
 		
 		add.s $f5, $f5, $f0              # dinero_ingresado += dinero
 		sub.s $f4, $f4, $f0              # restante -= dinero_ingreado

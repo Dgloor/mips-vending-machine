@@ -43,7 +43,7 @@ elegir_producto:
 
 	li $v0, 5
 	syscall
-	move $t1, $v0                     # t1 <- Posición producto
+	move $a0, $v0                     # a0 <- Posición producto
 	
 	jal realizar_cobro
 	#jal disminuir_stock
