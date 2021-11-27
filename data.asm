@@ -3,11 +3,11 @@
 
 .data
 
-prod_1: .asciiz "pulsera artesanal"
+prod_1: .asciiz "pulsera de piedra de luna"
 prod_2: .asciiz "billetera de cuero artesanal"
-prod_3: .asciiz "pluma artesanal"
-prod_4: .asciiz "collar artesanal"
-prod_5: .asciiz "aretes artesanales"
+prod_3: .asciiz "boligrafo artesanal de papagayo"
+prod_4: .asciiz "collar de semillas"
+prod_5: .asciiz "aretes de Tagua"
 prod_6: .asciiz "cinturon de cuero artesanal"
 
 productos: .word prod_1, prod_2, prod_3, prod_4, prod_5, prod_6
