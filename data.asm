@@ -3,12 +3,12 @@
 
 .data
 
-prod_1: .asciiz "pulsera"
-prod_2: .asciiz "billetera"
-prod_3: .asciiz "pluma"
-prod_4: .asciiz "collar"
-prod_5: .asciiz "aretes"
-prod_6: .asciiz "cinturon"
+prod_1: .asciiz "pulsera artesanal"
+prod_2: .asciiz "billetera de cuero artesanal"
+prod_3: .asciiz "pluma artesanal"
+prod_4: .asciiz "collar artesanal"
+prod_5: .asciiz "aretes artesanales"
+prod_6: .asciiz "cinturon de cuero artesanal"
 
 productos: .word prod_1, prod_2, prod_3, prod_4, prod_5, prod_6
 precios: .float 3.5, 5.6, 2.5, 15.3, 7.5, 10.0
