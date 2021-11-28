@@ -3,12 +3,14 @@
 .text 
 
 ### 
-### Presenta la cantidad restante de unidades de cada producto 
+### Presenta la cantidad restante de unidades de cada producto
 ###
 mostrar_stock:
 
-	addi $sp, $sp, -4
+	addi $sp, $sp, -12
 	sw $ra, 0($sp)
+	sw $s0, 4($sp)
+	sw $s2, 8($sp)
 
 	la $a0 msj_stock
 	li $v0, 4
@@ -16,44 +18,43 @@ mostrar_stock:
 
 	lw $t0, total_productos
 	li $t1, 0                         # i = 0
-	la $t2, productos                 # Puntero al primer producto
-	la $t4, cantidades                # Puntero al primer stock
 
 	for: 
 
-		beq $t1, $t0, return
+		beq $t1, $t0, return             # i < total_productos
 
 		la $a0, text_lista
 		li $v0, 4
 		syscall 
 
-		lw $a0, ($t2)                   # Imprime producto
+		lw $a0, ($s0)                    # Imprime producto
 		syscall
 
 		la $a0, text_puntos_espacio
 		syscall
 
-		lw $a0, ($t3) 
+		lw $a0, ($s2)
 		li $v0, 1
-		syscall                         # Imprime stock
+		syscall                          # Imprime stock
 
 		la $a0, text_unidades
 		li $v0, 4
 		syscall
 		
 		la $a0, NL
-		li $v0, 4
-		syscall                         # Imprime salto de línea
+		syscall                          # Imprime salto de línea
 
-		addi $t1, $t1, 1                # i += 1
-		addi $t2, $t2, 4                # Avanza puntero productos
-		addi $t3, $t3, 4                # Avanza puntero precios
+		addi $t1, $t1, 1                 # i += 1
+		addi $s0, $s0, 4                 # Avanza puntero productos
+		addi $s2, $s2, 4                 # Avanza puntero stock
 		
 		j for
 
 return:
 
 	lw $ra, 0($sp)
-	addi $sp, $sp, 4
+	lw $s0, 4($sp)
+	lw $s2, 8($sp)
+	addi $sp, $sp, 12
 	jr $ra
 	

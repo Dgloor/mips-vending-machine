@@ -8,25 +8,25 @@
 ###
 validar_denominacion:
 	
-	addi $sp, $sp, -4
+	addi $sp, $sp, -8
 	sw $ra, 0($sp)
+	sw $s3, 4($sp)
 	
 	lw $t0, total_denominaciones
 	li $t1, 0                         # i = 0
-	la $t2, denominaciones            # Puntero a la primera denominacion
 	move $v0, $zero                   # Dinero válido = Falso
 	
 	while:
 	
 		beq $t1, $t0, return             # i < total_denominaciones
 		
-		lwc1 $f0, ($t2)
+		lwc1 $f0, ($s3)
 		c.eq.s $f12, $f0                 # denominaciones[i] == dinero_ingresado?
 		
 		bc1t denominacion_valida         # Si es igual retorna 1
 		
 		addi $t1, $t1, 1                 # i += 1
-		addi $t2, $t2, 4                 # Avanza puntero denominaciones
+		addi $s3, $s3, 4                 # Avanza puntero denominaciones
 		
 		j while
 
@@ -37,5 +37,6 @@ denominacion_valida:
 return:
 
 	lw $ra, 0($sp)
-	addi $sp, $sp, 4
+	lw $s3, 4($sp)
+	addi $sp, $sp, 8
 	jr $ra

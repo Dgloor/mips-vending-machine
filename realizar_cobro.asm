@@ -7,21 +7,22 @@
 ###
 realizar_cobro:
 
-	addi $sp, $sp, -8
+	addi $sp, $sp, -12
 	sw $ra, 0($sp)
 	sw $a0, 4($sp)
+	sw $s1, 8($sp)
 	
-	la $t2, precios                   # Puntero al primer precio
-	sll $t3, $a0, 2                   # Posición producto * 4
-	add $t3, $t2, $t3                 # Inicio array + offset
+	sll $t3, $a0, 2                   # Posición producto * 4 (offset)
+	add $t3, $s1, $t3                 # Inicio array + offset
 	lwc1 $f20, ($t3)                  # Precio producto
 	
+	mtc1 $zero, $f4
 	add.s $f4, $f4, $f20              # restante por pagar
 	mtc1 $zero, $f5                   # dinero_ingresado = 0
 	
 	while:
 	
-		c.lt.s $f5, $f20                # while dinero_ingresado < precio_producto
+		c.lt.s $f5, $f20                 # while dinero_ingresado < precio_producto
 		bc1f endWhile
 	
 		li $v0, 4
@@ -30,7 +31,7 @@ realizar_cobro:
 	
 		li $v0, 2
 		mov.s $f12, $f20
-		syscall                           # Imprime precio producto
+		syscall                          # Imprime precio producto
 	
 		li $v0, 4
 		la $a0, msj_dinero_ingresado
@@ -38,7 +39,7 @@ realizar_cobro:
 	
 		li $v0, 2
 		mov.s $f12, $f5
-		syscall                           # Imprime dinero ingresado
+		syscall                          # Imprime dinero ingresado
 
 		li $v0, 4
 		la $a0, msj_restante
@@ -98,5 +99,6 @@ return:
 
 	lw $ra, 0($sp)
 	lw $a0, 4($sp)
-	addi $sp, $sp, 8
+	lw $s1, 8($sp)
+	addi $sp, $sp, 12
 	jr $ra

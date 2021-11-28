@@ -2,6 +2,14 @@
 
 .text
 
+###
+### Carga de direcciones base
+###
+la $s0, productos                 # Puntero al primer producto
+la $s1, precios                   # Puntero al primer precio
+la $s2, cantidades                # Puntero al primer stock
+la $s3, denominaciones            # Puntero a primer denominación
+
 main:
 
 	###
@@ -9,13 +17,13 @@ main:
 	###
 	li $v0, 4
 	la $a0, msj_menu
-	syscall                           
+	syscall
 
 	###
 	### Solicita la opción del menú
 	###
 	la $a0, input_op
-	syscall                           
+	syscall
 
 	li $v0, 5
 	syscall
