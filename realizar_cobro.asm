@@ -2,13 +2,14 @@
 
 .text
 
-### 
+###
 ### Solicita el ingreso de dinero para realizar el cobro
 ###
 realizar_cobro:
 
-	addi $sp, $sp, -4
+	addi $sp, $sp, -8
 	sw $ra, 0($sp)
+	sw $a0, 4($sp)
 	
 	la $t2, precios                   # Puntero al primer precio
 	sll $t3, $a0, 2                   # Posición producto * 4
@@ -17,7 +18,6 @@ realizar_cobro:
 	
 	add.s $f4, $f4, $f20              # restante por pagar
 	mtc1 $zero, $f5                   # dinero_ingresado = 0
-	mtc1 $zero, $f6                   # vuelto = 0
 	
 	while:
 	
@@ -63,14 +63,21 @@ realizar_cobro:
 		mov.s $f12, $f0
 
 		jal validar_denominacion
-		# if dinero not in denominaciones_validas
 		
+		bne $v0, 0, else
+		
+		li $v0, 4
+		la $a0, msj_error_denominacion
+		syscall                          # Muestra error si dinero no es una denominación válida
+		
+		j while
+
 		else:
 		
 		add.s $f5, $f5, $f0              # dinero_ingresado += dinero
 		sub.s $f4, $f4, $f0              # restante -= dinero_ingreado
 
-		jal while
+		j while
 
 endWhile:
 	
@@ -80,8 +87,8 @@ endWhile:
 
 	li $v0, 2
 	sub.s $f6, $f5, $f20
-	mov.s $f12, $f6                   # Imprime cambio
-	syscall	
+	mov.s $f12, $f6
+	syscall	                          # Imprime cambio
 	
 	li $v0, 4
 	la $a0, msj_gracias_compra
@@ -90,5 +97,6 @@ endWhile:
 return:
 
 	lw $ra, 0($sp)
-	addi $sp, $sp, 4
+	lw $a0, 4($sp)
+	addi $sp, $sp, 8
 	jr $ra

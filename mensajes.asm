@@ -18,10 +18,10 @@ msj_total_producto: .asciiz "\nTotal producto: $"
 msj_dinero_ingresado: .asciiz "\nMonto ingresado: $"
 msj_restante: .asciiz "\nRestante: $"
 msj_cambio: .asciiz "\nSu cambio es de: $ "
-msj_gracias_compra: .asciiz "\n\n¡Gracias por su compra!\n"
+msj_gracias_compra: .asciiz "\n\nPuede retirar su producto, ¡Gracias por su compra!\n"
 
-msj_error_input_op: .asciiz "\n[!] Error, opción no válida. \n"
-msj_error_denominacion: .asciiz "\n[!] Error dinero inválido\n"
+msj_error_input_op: .asciiz "\n[!] Error, opción no válida.\n"
+msj_error_denominacion: .asciiz "\n[!] Error dinero inválido.\n"
 
 input_op: .asciiz "\nIngrese una opción: "
 input_producto: .asciiz "\nIngrese posición de producto: "

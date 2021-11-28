@@ -4,11 +4,10 @@
 
 main:
 
-	li $v0, 4
-	
 	###
 	### Muestra el menú principal
 	###
+	li $v0, 4
 	la $a0, msj_menu
 	syscall                           
 
@@ -46,7 +45,7 @@ elegir_producto:
 	move $a0, $v0                     # a0 <- Posición producto
 	
 	jal realizar_cobro
-	#jal disminuir_stock
+	jal disminuir_stock
 	jal main
 
 op_2: 

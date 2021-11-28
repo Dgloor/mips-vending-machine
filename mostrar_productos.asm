@@ -14,14 +14,14 @@ mostrar_productos:
 	li $v0, 4
 	syscall
 
-	lw $t2, total_productos
+	lw $t0, total_productos
 	li $t1, 0                         # i = 0
-	la $t3, productos                 # Puntero al primer producto
-	la $t4, precios                   # Puntero al primer precio
+	la $t2, productos                 # Puntero al primer producto
+	la $t3, precios                   # Puntero al primer precio
 	
 	for:
 
-		beq $t1, $t2, return            # i < total_productos
+		beq $t1, $t0, return            # i < total_productos
 
 		move $a0, $t1
 		li $v0, 1
@@ -31,13 +31,13 @@ mostrar_productos:
 		li $v0, 4
 		syscall
 		
-		lw $a0, ($t3) 
+		lw $a0, ($t2) 
 		syscall                         # Imprime producto
 		
 		la $a0, text_espacio_dolar
 		syscall
 
-		lwc1 $f12, ($t4) 
+		lwc1 $f12, ($t3)
 		li $v0, 2
 		syscall                         # Imprime precio
 		
@@ -46,8 +46,8 @@ mostrar_productos:
 		syscall                         # Imprime salto de línea
 		
 		addi $t1, $t1, 1                # i += 1
-		addi $t3, $t3, 4                # Avanza puntero productos
-		addi $t4, $t4, 4                # Avanza puntero precios
+		addi $t2, $t2, 4                # Avanza puntero productos
+		addi $t3, $t3, 4                # Avanza puntero precios
 		
 		j for
 
