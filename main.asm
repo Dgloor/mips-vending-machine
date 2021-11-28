@@ -5,10 +5,13 @@
 ###
 ### Carga de direcciones base
 ###
-la $s0, productos                 # Puntero al primer producto
-la $s1, precios                   # Puntero al primer precio
-la $s2, cantidades                # Puntero al primer stock
+la $s0, productos                 # Puntero a primer producto
+la $s1, precios                   # Puntero a primer precio
+la $s2, cantidades                # Puntero a primer stock
 la $s3, denominaciones            # Puntero a primer denominación
+la $s4, cantidades_original       # Puntero a primer stock original
+
+#jal salvar_stock_original
 
 main:
 

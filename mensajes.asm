@@ -1,6 +1,6 @@
 .globl msj_menu, msj_productos, msj_stock, msj_pago
 .globl msj_denominaciones, msj_total_producto, msj_dinero_ingresado
-.globl msj_restante, msj_cambio, msj_gracias_compra
+.globl msj_restante, msj_cambio, msj_gracias_compra, msj_stock_bajo
 .globl msj_error_input_op, msj_error_denominacion
 .globl input_op, input_producto, input_dinero
 .globl text_espacio_dolar, text_punto_espacio, text_lista
@@ -20,8 +20,9 @@ msj_restante: .asciiz "\nRestante: $"
 msj_cambio: .asciiz "\nSu cambio es de: $ "
 msj_gracias_compra: .asciiz "\n\nPuede retirar su producto, ¡Gracias por su compra!\n"
 
-msj_error_input_op: .asciiz "\n[!] Error, opción no válida.\n"
-msj_error_denominacion: .asciiz "\n[!] Error dinero inválido.\n"
+msj_error_input_op: .asciiz "\n[X] Error, opción no válida.\n"
+msj_error_denominacion: .asciiz "\n[X] Error, dinero inválido.\n"
+msj_stock_bajo: .asciiz " [!] Stock por debajo del mínimo."
 
 input_op: .asciiz "\nIngrese una opción: "
 input_producto: .asciiz "\nIngrese posición de producto: "
